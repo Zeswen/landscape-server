@@ -10,9 +10,8 @@ const PageSchema = new Schema(
       header: {
         title: String,
         position: {type: String, enum: ['left', 'center', 'right'] },
-        menu: Boolean,
-        reverse: Boolean,
-        image: Boolean,
+        hasMenu: Boolean,
+        isReverse: Boolean,
         imgUrl: String,
         color: String,
         backgroundColor: String,
@@ -24,17 +23,17 @@ const PageSchema = new Schema(
           title: String,
           position: {type: String, enum: ['left', 'center', 'right'] },
           description: String,
-          image: Boolean,
           imgUrl: String,
           color: String,
           backgroundColor: String,
+          backgroundImg: String,
           font: String,
           fontSize: String
         }
       ],
       footer: {
         position: {type: String, enum: ['left', 'center', 'right'] },
-        copyright: Boolean,
+        hasCopyright: Boolean,
         owner: String,
         social: [
           {

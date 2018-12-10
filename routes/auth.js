@@ -4,7 +4,7 @@ const router = express.Router();
 const User = require("../models/User");
 const parser = require("../config/cloudinary");
 const bcrypt = require("bcrypt");
-const bcryptSalt = 5;
+const bcryptSalt = 12;
 
 router.post("/signup", (req, res) => {
   const { email, password } = req.body;
@@ -28,29 +28,41 @@ router.post("/signup", (req, res) => {
 
     newUser.save()
       .then(user => {
-        req.login(user);
+        req.login(user, (err) => {
+          if (err) {
+            res.status(500).json({ message: 'Login after signup went bad.' });
+            return;
+          }
+        });
         res.status(200).json(newUser);
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err)
         res.status(500).json({ message: "Something went wrong" });
       });
   });
 });
 
-router.post("/login", (req, res, next) => {
-  passport.authenticate("local", (err, user) => {
-    if (err) {
-      return res.status(500).json({ message: "Error on login" });
-    }
-    if (!user) {
-      return res.status(500).json({ message: "Error on login" });
-    }
-    req.logIn(user, (err) => {
+router.post('/login', (req, res, next) => {
+  passport.authenticate('local', (err, theUser, failureDetails) => {
       if (err) {
-        return res.status(500).json({message: "Error on login"});
+          res.status(500).json({ message: 'Something went wrong authenticating user' });
+          return;
       }
-      return res.json(user);
-    });
+  
+      if (!theUser) {
+          res.status(401).json(failureDetails);
+          return;
+      }
+
+      // save user in session
+      req.login(theUser, (err) => {
+          if (err) {
+              res.status(500).json({ message: 'Session save went bad.' });
+              return;
+          }
+          res.status(200).json(theUser);
+      });
   })(req, res, next);
 });
 
