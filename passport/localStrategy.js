@@ -9,7 +9,7 @@ passport.use(new LocalStrategy({
   }, 
   (email, password, done) => {
     User.findOne({ email })
-    .populate(pages)
+    .populate('pages')
     .then(foundUser => {
       if (!foundUser) {
         done(null, false, { message: 'Incorrect email' });

@@ -1,13 +1,15 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
+const Page = './Page'
+
 const UserSchema = new Schema(
   {
     email: String,
     password: String,
     imgUrl: {type: String, default: 'https://res.cloudinary.com/dk4iqakns/image/upload/v1544361952/landscape/profile.png' },
     pages: [
-      { type: Schema.Types.ObjectId }
+      { type: Schema.Types.ObjectId, ref: 'Page' }
     ]
   },
   {
