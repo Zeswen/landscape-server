@@ -14,12 +14,28 @@ pageRouter.post('/newPage', (req, res, next) => {
             header: {
                 title: 'My Logo',
                 fontSize: 32,
+                menuSize: 32,
                 fontFamily: 'Roboto',
                 color: '#8367C7',
                 backgroundColor: '#F0FFF1',
                 position: 'center',
+                imgUrl: null,
+                hasMenu: false,
+                isReverse: false
             },
-            sections: [],
+            sections: [
+                {
+                    title: 'My Section',
+                    position: center,
+                    description: 'This is my first section',
+                    imgUrl: null,
+                    color: String,
+                    backgroundColor: String,
+                    backgroundImg: String,
+                    font: String,
+                    fontSize: String
+                }
+            ],
             footer: null
         },
         colors: ['#360568', '#5B2A86', '#7785AC', '#9AC6C5', '#A5E6BA', '#31263E', '#221E22', '#52528C', '#7C9EB2', '#CBC0AD'],
@@ -43,7 +59,10 @@ pageRouter.post('/getPage', (req, res, next) => {
 pageRouter.post('/updatePage', (req, res, next) => {
     Page.findOneAndUpdate({id: req.body.id}, { ...req.body })
         .then(() => res.status(200).json({ message: 'Saved Succesfully' }))
-        .catch(err => res.status(500).json({ message: 'Please try again' }))
+        .catch(err => {
+            console.log(err)
+            return res.status(500).json({ message: 'Please try again' }
+        )})
 })
 
 module.exports = pageRouter;

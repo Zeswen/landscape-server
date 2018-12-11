@@ -15,8 +15,9 @@ const PageSchema = new Schema(
         imgUrl: String,
         color: String,
         backgroundColor: String,
-        font: String,
-        fontSize: String
+        fontFamily: String,
+        fontSize: String,
+        menuSize: String,
       },
       sections: [
         {
