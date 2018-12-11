@@ -26,14 +26,14 @@ pageRouter.post('/newPage', (req, res, next) => {
             sections: [
                 {
                     title: 'My Section',
-                    position: center,
+                    position: 'center',
                     description: 'This is my first section',
                     imgUrl: null,
-                    color: String,
-                    backgroundColor: String,
-                    backgroundImg: String,
-                    font: String,
-                    fontSize: String
+                    color: '#F0FFF1',
+                    backgroundColor: '#8367C7',
+                    backgroundImg: null,
+                    fontFamily: 'Roboto',
+                    fontSize: 32
                 }
             ],
             footer: null

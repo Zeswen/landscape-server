@@ -28,7 +28,7 @@ const PageSchema = new Schema(
           color: String,
           backgroundColor: String,
           backgroundImg: String,
-          font: String,
+          fontFamily: String,
           fontSize: String
         }
       ],
@@ -44,7 +44,7 @@ const PageSchema = new Schema(
         ],
         color: String,
         backgroundColor: String,
-        font: String,
+        fontFamily: String,
         fontSize: String
       }
     },
