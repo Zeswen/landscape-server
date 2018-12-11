@@ -10,7 +10,18 @@ pageRouter.post('/newPage', (req, res, next) => {
         title: req.body.title,
         url: `localhost:5000/${urlParser(req.body.title)}`,
         owner: req.body.id,
-        structure: {},
+        structure: {
+            header: {
+                title: 'My Logo',
+                fontSize: 32,
+                fontFamily: 'Roboto',
+                color: '#8367C7',
+                backgroundColor: '#F0FFF1',
+                position: 'center',
+            },
+            sections: [],
+            footer: null
+        },
         colors: ['#360568', '#5B2A86', '#7785AC', '#9AC6C5', '#A5E6BA', '#31263E', '#221E22', '#52528C', '#7C9EB2', '#CBC0AD'],
         fonts: ["Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", 'sans-serif']
     }
@@ -22,5 +33,17 @@ pageRouter.post('/newPage', (req, res, next) => {
                 .catch(err => res.status(500).json({ message: err }))
         })
 });
+
+pageRouter.post('/getPage', (req, res, next) => {
+    Page.findById(req.body.id)
+        .then(page => res.status(200).json(page))
+        .catch(err => console.log(err));
+})
+
+pageRouter.post('/updatePage', (req, res, next) => {
+    Page.findOneAndUpdate({id: req.body.id}, { ...req.body })
+        .then(() => res.status(200).json({ message: 'Saved Succesfully' }))
+        .catch(err => res.status(500).json({ message: 'Please try again' }))
+})
 
 module.exports = pageRouter;
