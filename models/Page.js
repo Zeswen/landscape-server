@@ -9,27 +9,36 @@ const PageSchema = new Schema(
     structure: {
       header: {
         title: String,
-        position: {type: String, enum: ['left', 'center', 'right'] },
-        hasMenu: Boolean,
-        isReverse: Boolean,
         imgUrl: String,
-        color: String,
         backgroundColor: String,
+        position: {type: String, enum: ['left', 'center', 'right'] },
+        padding: String,
+        hasMenu: Boolean,
+        menuSize: String,
+        isReverse: Boolean,
         fontFamily: String,
         fontSize: String,
-        menuSize: String,
+        color: String,
       },
       sections: [
         {
+          id: String,
           title: String,
-          position: {type: String, enum: ['left', 'center', 'right'] },
           description: String,
           imgUrl: String,
-          color: String,
-          backgroundColor: String,
           backgroundImg: String,
-          fontFamily: String,
-          fontSize: String
+          backgroundColor: String,
+          position: {type: String, enum: ['top', 'center', 'bottom'] },
+          height: String,
+          textAlign: {type: String, enum: ['left', 'center', 'right', 'justify'] },
+          padding: String,
+          isReverse: String,
+          titleFontFamily: String,
+          titleFontSize: String,
+          titleColor: String,
+          descriptionFontFamily: String,
+          descriptionFontSize: String,
+          descriptionColor: String,
         }
       ],
       footer: {
@@ -47,10 +56,6 @@ const PageSchema = new Schema(
         fontFamily: String,
         fontSize: String
       }
-    },
-    colors: {
-      type: Array,
-      default: ['#360568', '#5B2A86', '#7785AC', '#9AC6C5', '#A5E6BA', '#31263E', '#221E22', '#52528C', '#7C9EB2', '#CBC0AD']
     },
     fonts: {
       type: Array,

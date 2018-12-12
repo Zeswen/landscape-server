@@ -13,32 +13,37 @@ pageRouter.post('/newPage', (req, res, next) => {
         structure: {
             header: {
                 title: 'My Logo',
-                fontSize: 32,
-                menuSize: 32,
-                fontFamily: 'Roboto',
-                color: '#8367C7',
-                backgroundColor: '#F0FFF1',
-                position: 'center',
                 imgUrl: null,
+                backgroundColor:'#F0FFF1',
+                position: 'center',
                 hasMenu: false,
-                isReverse: false
+                menuSize: 32,
+                isReverse: false,
+                fontFamily: 'Roboto',
+                fontSize: 32,
+                color: '#8367C7'
             },
             sections: [
-                {
+                {  
+                    id: 1,
                     title: 'My Section',
-                    position: 'center',
                     description: 'This is my first section',
                     imgUrl: null,
-                    color: '#F0FFF1',
-                    backgroundColor: '#8367C7',
                     backgroundImg: null,
-                    fontFamily: 'Roboto',
-                    fontSize: 32
+                    backgroundColor: '#8367C7',
+                    position: 'top',
+                    height: 300,
+                    textAlign: 'center',
+                    titleFontFamily: 'Roboto',
+                    titleFontSize: 32,
+                    titleColor: '#F0FFF1',
+                    descriptionFontFamily: 'Roboto',
+                    descriptionFontSize: 32,
+                    descriptionColor: '#F0FFF1',
                 }
             ],
             footer: null
         },
-        colors: ['#360568', '#5B2A86', '#7785AC', '#9AC6C5', '#A5E6BA', '#31263E', '#221E22', '#52528C', '#7C9EB2', '#CBC0AD'],
         fonts: ["Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", 'sans-serif']
     }
 
