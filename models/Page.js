@@ -61,6 +61,7 @@ const PageSchema = new Schema(
         ownerColor:String,
         social: [
           {
+            active: Boolean,
             name: {type: String, enum: ['Facebook', 'Twitter', 'Instagram']},
             url: String
           }

@@ -45,31 +45,57 @@ pageRouter.post('/newPage', (req, res, next) => {
                     descriptionFontFamily: 'Roboto',
                     descriptionFontSize: 32,
                     descriptionColor: '#F0FFF1',
+                },
+                {  
+                    id: 2,
+                    title: 'The Section',
+                    description: 'This is my second section',
+                    imgUrl: null,
+                    backgroundImg: null,
+                    backgroundColor: "#e974d0",
+                    position: 'top',
+                    height: 170,
+                    paddingV: 16,
+                    paddingH: 8,
+                    textAlign: 'center',
+                    titleFontFamily: 'Roboto',
+                    titleFontSize: 32,
+                    titleColor: '#F0FFF1',
+                    descriptionFontFamily: 'Roboto',
+                    descriptionFontSize: 32,
+                    descriptionColor: '#F0FFF1',
                 }
             ],
             footer: {
                 owner: 'Pepe',
                 backgroundColor: '#F0FFF1',
                 position: 'center',
-                height: 60,
+                height: 140,
                 paddingV: 16,
                 paddingH: 8,
                 isReverse: false,
                 hasCopyright: true,
                 copyrightFontFamily: 'Roboto',
                 copyrightFontSize: 12,
-                copyrightColor: '#8367C7',
+                copyrightColor: '#000000',
                 ownerFontFamily: 'Roboto',
                 ownerFontSize: 16,
-                ownerColor: '#8367C7',
+                ownerColor: '#000000',
                 social: [
                     {
-                        name: 'Twitter',
-                        url: 'http://www.twitter.com/Zeswen'
+                        active: false,
+                        name: 'Facebook',
+                        url: ''
                     },
                     {
+                        active: true,
+                        name: 'Twitter',
+                        url: 'http://www.twitter.com/twitter'
+                    },
+                    {
+                        active: true,
                         name: 'Instagram',
-                        url: 'http://www.instagram.com/zeswen'
+                        url: 'http://www.instagram.com/instagram'
                     },
                 ],
                 position: 'spaced',
