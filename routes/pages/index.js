@@ -16,6 +16,9 @@ pageRouter.post('/newPage', (req, res, next) => {
                 imgUrl: null,
                 backgroundColor:'#F0FFF1',
                 position: 'center',
+                height: 60,
+                paddingV: 16,
+                paddingH: 8,
                 hasMenu: false,
                 menuSize: 32,
                 isReverse: false,
@@ -33,6 +36,8 @@ pageRouter.post('/newPage', (req, res, next) => {
                     backgroundColor: '#8367C7',
                     position: 'top',
                     height: 300,
+                    paddingV: 16,
+                    paddingH: 8,
                     textAlign: 'center',
                     titleFontFamily: 'Roboto',
                     titleFontSize: 32,
@@ -42,7 +47,33 @@ pageRouter.post('/newPage', (req, res, next) => {
                     descriptionColor: '#F0FFF1',
                 }
             ],
-            footer: null
+            footer: {
+                owner: 'Pepe',
+                backgroundColor: '#F0FFF1',
+                position: 'center',
+                height: 60,
+                paddingV: 16,
+                paddingH: 8,
+                isReverse: false,
+                hasCopyright: true,
+                copyrightFontFamily: 'Roboto',
+                copyrightFontSize: 12,
+                copyrightColor: '#8367C7',
+                ownerFontFamily: 'Roboto',
+                ownerFontSize: 16,
+                ownerColor: '#8367C7',
+                social: [
+                    {
+                        name: 'Twitter',
+                        url: 'http://www.twitter.com/Zeswen'
+                    },
+                    {
+                        name: 'Instagram',
+                        url: 'http://www.instagram.com/zeswen'
+                    },
+                ],
+                position: 'spaced',
+            }
         },
         fonts: ["Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", 'sans-serif']
     }

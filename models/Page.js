@@ -12,7 +12,9 @@ const PageSchema = new Schema(
         imgUrl: String,
         backgroundColor: String,
         position: {type: String, enum: ['left', 'center', 'right'] },
-        padding: String,
+        height: String,
+        paddingV: String,
+        paddingH: String,
         hasMenu: Boolean,
         menuSize: String,
         isReverse: Boolean,
@@ -30,8 +32,9 @@ const PageSchema = new Schema(
           backgroundColor: String,
           position: {type: String, enum: ['top', 'center', 'bottom'] },
           height: String,
+          paddingV: String,
+          paddingH: String,
           textAlign: {type: String, enum: ['left', 'center', 'right', 'justify'] },
-          padding: String,
           isReverse: String,
           titleFontFamily: String,
           titleFontSize: String,
@@ -42,19 +45,30 @@ const PageSchema = new Schema(
         }
       ],
       footer: {
-        position: {type: String, enum: ['left', 'center', 'right'] },
-        hasCopyright: Boolean,
         owner: String,
+        backgroundColor: String,
+        position: {type: String, enum: ['top', 'center', 'bottom'] },
+        height: String,
+        paddingV: String,
+        paddingH: String,
+        isReverse: Boolean,
+        hasCopyright: Boolean,
+        copyrightFontFamily: String,
+        copyrightFontSize: String,
+        copyrightColor: String,
+        ownerFontFamily: String,
+        ownerFontSize: String,
+        ownerColor:String,
         social: [
           {
-            name: String,
+            name: {type: String, enum: ['Facebook', 'Twitter', 'Instagram']},
             url: String
           }
         ],
-        color: String,
-        backgroundColor: String,
+        position: {type: String, enum: ['left', 'center', 'right', 'spaced'] },
         fontFamily: String,
-        fontSize: String
+        fontSize: String,
+        color: String,
       }
     },
     fonts: {
