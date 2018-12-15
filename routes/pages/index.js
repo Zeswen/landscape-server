@@ -2,6 +2,7 @@ const express = require('express');
 const pageRouter  = express.Router();
 const User = require("../../models/User");
 const Page = require("../../models/Page");
+const uploadCloud = require("../../config/cloudinary");
 
 pageRouter.post('/newPage', (req, res, next) => {
     const urlParser = (str) => str.split(' ').join('').replace(/([^A-Za-z0-9])/ig, '')
@@ -118,7 +119,7 @@ pageRouter.post('/getPage', (req, res, next) => {
         .catch(err => console.log(err));
 })
 
-pageRouter.post('/updatePage', (req, res, next) => {
+pageRouter.post('/updatePage', uploadCloud.single("imgUrl"), (req, res, next) => {
     Page.findOneAndUpdate({id: req.body.id}, { ...req.body })
         .then(() => res.status(200).json({ message: 'Saved Succesfully' }))
         .catch(err => {
