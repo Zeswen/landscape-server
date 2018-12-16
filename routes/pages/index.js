@@ -120,7 +120,7 @@ pageRouter.post('/getPage', (req, res, next) => {
 })
 
 pageRouter.post('/updatePage', uploadCloud.single("imgUrl"), (req, res, next) => {
-    Page.findOneAndUpdate({id: req.body.id}, { ...req.body })
+    Page.findByIdAndUpdate(req.body._id, { ...req.body })
         .then(() => res.status(200).json({ message: 'Saved Succesfully' }))
         .catch(err => {
             console.log(err)
