@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const PageSchema = new Schema(
   {
     title: String,
-    url: String,
+    url: {type: String, unique: true},
     owner: Schema.Types.ObjectId,
     structure: {
       header: {
@@ -47,7 +47,7 @@ const PageSchema = new Schema(
       footer: {
         owner: String,
         backgroundColor: String,
-        position: {type: String, enum: ['top', 'center', 'bottom'] },
+        position: {type: String, enum: ['top', 'center', 'bottom', 'auto'] },
         height: String,
         paddingV: String,
         paddingH: String,
@@ -66,7 +66,7 @@ const PageSchema = new Schema(
             url: String
           }
         ],
-        position: {type: String, enum: ['left', 'center', 'right', 'spaced'] },
+        socialPosition: {type: String, enum: ['left', 'center', 'right', 'spaced'] },
         fontFamily: String,
         fontSize: String,
         color: String,

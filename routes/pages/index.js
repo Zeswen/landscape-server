@@ -9,7 +9,7 @@ pageRouter.post('/newPage', (req, res, next) => {
 
     let newPage = {
         title: req.body.title,
-        url: `localhost:5000/${urlParser(req.body.title)}`,
+        url: urlParser(req.body.title),
         owner: req.body.id,
         structure: {
             header: {
@@ -25,7 +25,7 @@ pageRouter.post('/newPage', (req, res, next) => {
                 isReverse: false,
                 fontFamily: 'Roboto',
                 fontSize: 32,
-                color: '#8367C7'
+                color: '#2d2d2d'
             },
             sections: [
                 {  
@@ -34,9 +34,9 @@ pageRouter.post('/newPage', (req, res, next) => {
                     description: 'This is my first section',
                     imgUrl: null,
                     backgroundImg: null,
-                    backgroundColor: '#8367C7',
+                    backgroundColor: '#2c2c2d',
                     position: 'top',
-                    height: 300,
+                    height: 295,
                     paddingV: 16,
                     paddingH: 8,
                     textAlign: 'center',
@@ -53,7 +53,7 @@ pageRouter.post('/newPage', (req, res, next) => {
                     description: 'This is my second section',
                     imgUrl: null,
                     backgroundImg: null,
-                    backgroundColor: "#e974d0",
+                    backgroundColor: "#2c2965",
                     position: 'top',
                     height: 170,
                     paddingV: 16,
@@ -69,8 +69,8 @@ pageRouter.post('/newPage', (req, res, next) => {
             ],
             footer: {
                 owner: 'Pepe',
-                backgroundColor: '#F0FFF1',
-                position: 'center',
+                backgroundColor: '#c8c8c9',
+                position: 'auto',
                 height: 140,
                 paddingV: 16,
                 paddingH: 8,
@@ -99,7 +99,6 @@ pageRouter.post('/newPage', (req, res, next) => {
                         url: 'http://www.instagram.com/instagram'
                     },
                 ],
-                position: 'spaced',
             }
         },
         fonts: ["Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", 'sans-serif']
@@ -114,7 +113,8 @@ pageRouter.post('/newPage', (req, res, next) => {
 });
 
 pageRouter.post('/getPage', (req, res, next) => {
-    Page.findById(req.body.id)
+    console.log(req.body.url)
+    Page.findOne({url: req.body.url})
         .then(page => res.status(200).json(page))
         .catch(err => console.log(err));
 })
