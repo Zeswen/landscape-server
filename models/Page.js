@@ -27,7 +27,6 @@ const PageSchema = new Schema(
           id: String,
           title: String,
           description: String,
-          imgUrl: String,
           backgroundImg: String,
           backgroundColor: String,
           position: {type: String, enum: ['top', 'center', 'bottom'] },

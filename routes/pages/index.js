@@ -2,7 +2,7 @@ const express = require('express');
 const pageRouter  = express.Router();
 const User = require("../../models/User");
 const Page = require("../../models/Page");
-const uploadCloud = require("../../config/cloudinary");
+const parser = require("../../config/cloudinary");
 
 pageRouter.post('/newPage', (req, res, next) => {
     const urlParser = (str) => str.split(' ').join('').replace(/([^A-Za-z0-9])/ig, '')
@@ -32,13 +32,12 @@ pageRouter.post('/newPage', (req, res, next) => {
                     id: 1,
                     title: 'My Section',
                     description: 'This is my first section',
-                    imgUrl: null,
                     backgroundImg: null,
                     backgroundColor: '#2c2c2d',
                     position: 'top',
                     height: 295,
-                    paddingV: 16,
-                    paddingH: 8,
+                    paddingV: 4,
+                    paddingH: 12,
                     textAlign: 'center',
                     titleFontFamily: 'Roboto',
                     titleFontSize: 32,
@@ -51,7 +50,6 @@ pageRouter.post('/newPage', (req, res, next) => {
                     id: 2,
                     title: 'The Section',
                     description: 'This is my second section',
-                    imgUrl: null,
                     backgroundImg: null,
                     backgroundColor: "#2c2965",
                     position: 'top',
@@ -118,8 +116,7 @@ pageRouter.post('/getPage', (req, res, next) => {
         .catch(err => console.log(err));
 })
 
-pageRouter.post('/updatePage', uploadCloud.single("imgUrl"), (req, res, next) => {
-    // , { ...req.body } 
+pageRouter.post('/updatePage', (req, res, next) => {
     Page.findById(req.body._id)
         .then(page => {
             if (req.user.id == page.owner) {
@@ -136,5 +133,15 @@ pageRouter.post('/updatePage', uploadCloud.single("imgUrl"), (req, res, next) =>
             return res.status(500).json({ message: 'Please try again' }
         )})
 })
+
+pageRouter.post('/photoUpload', parser.single('image'), (req, res, next) => {
+    console.log(req.file)
+    if (req.file && req.file.url) {
+        return res.status(200).json({ imgUrl: req.file.url });
+    }
+
+    return res.status(500).json({ message: 'There was an error uploading the image' });
+});
+
 
 module.exports = pageRouter;
