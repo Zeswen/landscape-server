@@ -135,7 +135,6 @@ pageRouter.post('/updatePage', (req, res, next) => {
 })
 
 pageRouter.post('/photoUpload', parser.single('image'), (req, res, next) => {
-    console.log(req.file)
     if (req.file && req.file.url) {
         return res.status(200).json({ imgUrl: req.file.url });
     }
