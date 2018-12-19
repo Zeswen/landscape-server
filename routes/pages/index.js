@@ -22,7 +22,7 @@ pageRouter.post('/newPage', (req, res, next) => {
                 paddingH: 8,
                 hasMenu: true,
                 menuSize: 32,
-                menuBackground: '#000000',
+                menuBackground: '#FFFFFF',
                 isReverse: false,
                 fontFamily: 'Roboto',
                 fontSize: 32,
