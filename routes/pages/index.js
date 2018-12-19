@@ -16,11 +16,11 @@ pageRouter.post('/newPage', (req, res, next) => {
                 title: 'My Logo',
                 imgUrl: null,
                 backgroundColor:'#F0FFF1',
-                position: 'center',
+                position: 'left',
                 height: 60,
                 paddingV: 16,
                 paddingH: 8,
-                hasMenu: false,
+                hasMenu: true,
                 menuSize: 32,
                 isReverse: false,
                 fontFamily: 'Roboto',
@@ -113,15 +113,26 @@ pageRouter.post('/newPage', (req, res, next) => {
 });
 
 pageRouter.post('/getPage', (req, res, next) => {
-    console.log(req.body.url)
     Page.findOne({url: req.body.url})
-        .then(page => res.status(200).json(page))
+        .then(page => {
+            if (req.user.id == page.owner) return res.status(200).json(page)
+        })
         .catch(err => console.log(err));
 })
 
 pageRouter.post('/updatePage', uploadCloud.single("imgUrl"), (req, res, next) => {
-    Page.findByIdAndUpdate(req.body._id, { ...req.body })
-        .then(() => res.status(200).json({ message: 'Saved Succesfully' }))
+    // , { ...req.body } 
+    Page.findById(req.body._id)
+        .then(page => {
+            if (req.user.id == page.owner) {
+                page.update({...req.body})
+                    .then(()=> res.status(200).json({ message: 'Saved Succesfully' }))
+                    .catch(err => {
+                        console.log(err)
+                        return res.status(500).json({ message: 'Please try again' }
+                    )})
+            }
+        })
         .catch(err => {
             console.log(err)
             return res.status(500).json({ message: 'Please try again' }
