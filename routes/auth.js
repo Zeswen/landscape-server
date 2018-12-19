@@ -67,29 +67,6 @@ router.post('/login', (req, res, next) => {
   })(req, res, next);
 });
 
-router.post("/edit", uploadCload.single('photo'), (req, res) => {
-  const { email, password } = req.body;
-
-  const myUser = {};
-
-  if (email) {
-    myUser.email = email;
-  }
-
-  if (password) {
-    myUser.password = password;
-  }
-
-  if (req.file) {
-    myUser.imgUrl = req.file.url;
-  }
-
-  User.findByIdAndUpdate(req.user.id, myUser)
-    .then(() => {
-      res.json({ myUser });
-  });
-});
-
 router.get("/logout", (req, res) => {
   req.logout();
   res.status(200).json({ message: "Log out success!" });
