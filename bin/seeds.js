@@ -5,7 +5,7 @@ const User = require("../models/User");
 const bcryptSalt = 12;
 
 mongoose.connect(
-    process.env.DBURL,
+    process.env.DBURLPROD,
     { useNewUrlParser: true }
   )
   .then(x => {
