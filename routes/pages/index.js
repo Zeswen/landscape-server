@@ -114,9 +114,7 @@ pageRouter.post('/newPage', (req, res, next) => {
 
 pageRouter.post('/getPage', (req, res, next) => {
     Page.findOne({url: req.body.url})
-        .then(page => {
-            if (req.user.id == page.owner) return res.status(200).json(page)
-        })
+        .then(page => res.status(200).json(page))
         .catch(err => console.log(err));
 })
 
