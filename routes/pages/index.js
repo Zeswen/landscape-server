@@ -22,6 +22,7 @@ pageRouter.post('/newPage', (req, res, next) => {
                 paddingH: 8,
                 hasMenu: true,
                 menuSize: 32,
+                menuBackground: '#000000',
                 isReverse: false,
                 fontFamily: 'Roboto',
                 fontSize: 32,
@@ -66,7 +67,6 @@ pageRouter.post('/newPage', (req, res, next) => {
                 }
             ],
             footer: {
-                owner: 'Pepe',
                 backgroundColor: '#c8c8c9',
                 position: 'auto',
                 height: 140,
@@ -74,9 +74,11 @@ pageRouter.post('/newPage', (req, res, next) => {
                 paddingH: 8,
                 isReverse: false,
                 hasCopyright: true,
+                copyrightText: '© 2018, Landscape.com, Inc. or its affiliates',
                 copyrightFontFamily: 'Roboto',
                 copyrightFontSize: 12,
                 copyrightColor: '#000000',
+                ownerText: 'Made with love by Pepe',
                 ownerFontFamily: 'Roboto',
                 ownerFontSize: 16,
                 ownerColor: '#000000',

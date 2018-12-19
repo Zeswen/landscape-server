@@ -17,6 +17,7 @@ const PageSchema = new Schema(
         paddingH: String,
         hasMenu: Boolean,
         menuSize: String,
+        menuBackground: String,
         isReverse: Boolean,
         fontFamily: String,
         fontSize: String,
@@ -44,7 +45,6 @@ const PageSchema = new Schema(
         }
       ],
       footer: {
-        owner: String,
         backgroundColor: String,
         position: {type: String, enum: ['top', 'center', 'bottom', 'auto'] },
         height: String,
@@ -52,9 +52,11 @@ const PageSchema = new Schema(
         paddingH: String,
         isReverse: Boolean,
         hasCopyright: Boolean,
+        copyrightText: String,
         copyrightFontFamily: String,
         copyrightFontSize: String,
         copyrightColor: String,
+        ownerText: String,
         ownerFontFamily: String,
         ownerFontSize: String,
         ownerColor:String,
