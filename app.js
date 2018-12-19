@@ -23,15 +23,16 @@ mongoose
   .catch(err => {
     console.error("Error connecting to mongo", err);
   });
-
-const app_name = require("./package.json").name;
-const debug = require("debug")(
-  `${app_name}:${path.basename(__filename).split(".")[0]}`
-);
-
-const app = express();
-
-// Middleware Setup
+  
+  const app_name = require("./package.json").name;
+  const debug = require("debug")(
+    `${app_name}:${path.basename(__filename).split(".")[0]}`
+    );
+    
+    const app = express();
+    
+    // Middleware Setup
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -55,8 +56,8 @@ app.use(cors({
 
 app.use("/", require("./routes/index"));
 
-app.use((req, res) => {
-  res.sendFile(`${__dirname}/public/index.html`);
-});
-
+app.use((req, res, next) => {
+   res.sendFile(__dirname + "/public/index.html");
+  });
+  
 module.exports = app;
