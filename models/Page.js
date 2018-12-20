@@ -11,6 +11,7 @@ const PageSchema = new Schema(
         title: String,
         imgUrl: String,
         backgroundColor: String,
+        backgroundAlpha: String,
         position: {type: String, enum: ['left', 'center', 'right'] },
         height: String,
         paddingV: String,
@@ -22,6 +23,7 @@ const PageSchema = new Schema(
         fontFamily: String,
         fontSize: String,
         color: String,
+        alpha: String,
       },
       sections: [
         {
@@ -30,6 +32,7 @@ const PageSchema = new Schema(
           description: String,
           backgroundImg: String,
           backgroundColor: String,
+          backgroundAlpha: String,
           position: {type: String, enum: ['top', 'center', 'bottom'] },
           height: String,
           paddingV: String,
@@ -39,13 +42,16 @@ const PageSchema = new Schema(
           titleFontFamily: String,
           titleFontSize: String,
           titleColor: String,
+          titleAlpha: String,
           descriptionFontFamily: String,
           descriptionFontSize: String,
           descriptionColor: String,
+          descriptionAlpha: String,
         }
       ],
       footer: {
         backgroundColor: String,
+        backgroundAlpha: String,
         position: {type: String, enum: ['top', 'center', 'bottom', 'auto'] },
         height: String,
         paddingV: String,
@@ -56,10 +62,12 @@ const PageSchema = new Schema(
         copyrightFontFamily: String,
         copyrightFontSize: String,
         copyrightColor: String,
+        copyrightAlpha: String,
         ownerText: String,
         ownerFontFamily: String,
         ownerFontSize: String,
-        ownerColor:String,
+        ownerColor: String,
+        ownerAlpha: String,
         social: [
           {
             active: Boolean,
@@ -70,7 +78,6 @@ const PageSchema = new Schema(
         socialPosition: {type: String, enum: ['left', 'center', 'right', 'spaced'] },
         fontFamily: String,
         fontSize: String,
-        color: String,
       }
     },
     fonts: {
