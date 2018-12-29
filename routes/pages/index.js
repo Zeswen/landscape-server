@@ -132,7 +132,7 @@ pageRouter.post('/newPage', (req, res, next) => {
     Page.create(newPage)
         .then(page => {
             User.findByIdAndUpdate(req.body.id, { $push: { pages: page } })
-                .then(() => res.json({message: 'You created a new page'}))
+                .then(() => res.json({message: 'You created a new page', page}))
                 .catch(err => res.status(500).json({ message: err }))
         })
 });
