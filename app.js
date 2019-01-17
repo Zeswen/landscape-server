@@ -51,7 +51,7 @@ require("./passport")(app);
 
 app.use(cors({
   credentials: true,
-  origin: ['http://localhost:3000'],
+  origin: ['http://localhost:3000', 'https://ironhack-landscape.herokuapp.com'],
 }));
 
 app.use("/", require("./routes/index"));
